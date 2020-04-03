@@ -55,7 +55,7 @@ export default class App extends Component {
             <ul>
             <li onClick={()=>this.setState({difficulty: basicEasy})} className={this.state.difficulty === basicEasy ? "selected" : "link"}>Easy</li>
             <li onClick={()=>this.setState({difficulty: basicNormal})} className={this.state.difficulty === basicNormal ? "selected" : "link"}>Normal</li>
-            <li onClick={()=>this.setState({difficulty: basicHard})} className={this.state.difficulty === basicHard ? "selected" : "link"}>Beast Mode</li>
+            <li onClick={()=>this.setState({difficulty: basicHard})} className={this.state.difficulty === basicHard ? "selected" : "link"}>Hard</li>
             </ul>
           </div>
         </nav>
