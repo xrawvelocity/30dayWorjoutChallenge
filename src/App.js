@@ -61,7 +61,7 @@ export default class App extends Component {
         </nav>
         <main>{this.renderWorkouts()}</main>
         <footer>
-          <p>Copyright &copy; {curYear}</p>
+          
         </footer>
       </Fragment>
     );
