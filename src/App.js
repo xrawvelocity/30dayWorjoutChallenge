@@ -61,7 +61,8 @@ export default class App extends Component {
         </nav>
         <main>{this.renderWorkouts()}</main>
         <footer>
-          
+          <p>Copyright &copy; {curYear}</p>
+          <p>Made by <a href="https://linkedin.com/in/victor--fernandez" target="_blank" rel="noopener noreferrer">Victor Fernandez</a></p>
         </footer>
       </Fragment>
     );

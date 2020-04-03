@@ -1,7 +1,7 @@
 let pushups = 100;
 let pullups = 50;
 let legraises = 50;
-let squats = 100;
+let squats = 50;
 let arr = [];
 
 for (let day = 1; day < 31; day++) {
