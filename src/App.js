@@ -50,7 +50,7 @@ export default class App extends Component {
         <nav>
           <div className="nav">
             <div>
-            <h1 className="title"><span className="title-green">30 Day</span> Workout Challenge</h1>
+            <h1 className="title"><span className="title-green">30 Day</span> <span>Workout Challenge</span></h1>
             </div>
             <ul>
             <li onClick={()=>this.setState({difficulty: basicEasy})} className={this.state.difficulty === basicEasy ? "selected" : "link"}>Easy</li>

@@ -138,8 +138,10 @@ main {
 
   .title {
     font-size: 3rem;
-    padding: 2rem 60% 2rem 12%;
+    padding: 2rem 10rem 2rem 12%;
     text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
   }
 
   main {
