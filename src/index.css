@@ -93,7 +93,7 @@ nav ul {
 }
 
 .main-top {
-  display: none;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   width: 100%;
@@ -145,7 +145,7 @@ nav ul {
   grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
   gap: 3rem 5rem;
   justify-content: center;
-  padding: 20rem 5rem 0;
+  padding: 5rem;
 }
 
 .day {

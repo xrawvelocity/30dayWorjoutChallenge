@@ -12,11 +12,12 @@ let ids = JSON.parse(localStorage.getItem("ids"));
 
 if (!ids) ids = [0];
 
+let startTime = localStorage.getItem('startTime')
 
 export default class App extends Component {
   state = {
     difficulty: basicHard,
-    start: true,
+    start: false,
     ids: [...ids]
   };
 
