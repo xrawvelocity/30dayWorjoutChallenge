@@ -162,6 +162,22 @@ nav ul {
   visibility: hidden;
 }
 
+.main-finished {
+  align-self: center;
+  font-size: 3rem;
+  color: #ddd;
+  margin-bottom: 4rem;
+}
+
+.main-finished:hover {
+  cursor: default;
+}
+
+.main-finished__hidden {
+  display: none;
+  visibility: hidden;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
