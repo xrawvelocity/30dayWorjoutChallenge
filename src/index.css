@@ -204,6 +204,7 @@ footer {
   width: 100%;
   display: flex;
   justify-content: center;
+  color: #ccc;
   margin-bottom: 5rem;
   font-size: 1.6rem;
 }
@@ -269,5 +270,37 @@ footer a {
 
   footer {
     margin: 15rem 0;
+  }
+
+  .main-btns {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 15rem 0% 3rem;
+    font-size: 1.6rem;
+  }
+  
+  .main-btn {
+    background-color: lawngreen;
+    color: #000;
+    padding: 1rem 2.5rem;
+    border-radius: 2px;
+    margin-top: 1rem;
+  }
+  
+  .main-btn:hover {
+    cursor: pointer;
+    background-color: rgb(95, 190, 0);
+  }
+  
+  .main-btn__hidden {
+    display: none;
+    visibility: hidden;
+  }
+  
+  .main-started {
+    align-self: center;
+    font-size: 1.6rem;
+    color: #ddd;
+    margin: 3rem 0 -10rem;
   }
 }
