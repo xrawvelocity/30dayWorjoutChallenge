@@ -14,10 +14,14 @@ if (!ids) ids = [0];
 
 let startTime = localStorage.getItem('startTime')
 
+let started;
+
+startTime ? started = true : started = false
+
 export default class App extends Component {
   state = {
     difficulty: basicHard,
-    start: false,
+    start: started,
     ids: [...ids]
   };
 
@@ -145,11 +149,12 @@ export default class App extends Component {
                 className="main-btn"
                 onClick={async () => {
                   await localStorage.removeItem("ids");
+                  await localStorage.removeItem("startTime");
                   if (!ids) ids = [0];
                   else {
                     ids = JSON.parse(localStorage.getItem("ids"));
                   }
-                  this.setState({ start: false, ids: [...ids] });
+                  this.setState({ start: false, ids: [0] });
                 }}
               >
                 RESET
@@ -160,7 +165,7 @@ export default class App extends Component {
                 this.state.start ? "main-started" : "main-started__hidden"
               }
             >
-              Started Challenge at: {this.state.time}
+              Started Challenge at: {startTime}
             </p>
           </div>
           <section className="grid">{this.renderWorkouts()}</section>
