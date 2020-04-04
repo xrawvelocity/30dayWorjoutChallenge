@@ -42,6 +42,7 @@ nav {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 10000;
 }
 
 nav ul {
@@ -60,6 +61,10 @@ nav ul {
 .title {
   font-size: 4rem;
   text-transform: uppercase;
+}
+
+.title:hover {
+  cursor: default;
 }
 
 .title-green {
@@ -83,13 +88,64 @@ nav ul {
   color: lawngreen !important;
 }
 
-main {
-  /* background-color: #111211; */
+.selected:hover {
+  cursor: default;
+}
+
+.main-top {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.main-btns {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 20rem 30% 10rem;
+  font-size: 3rem;
+}
+
+.main-btn {
+  background-color: lawngreen;
+  color: #000;
+  padding: 2rem 3.5rem;
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+
+.main-btn:hover {
+  cursor: pointer;
+  background-color: rgb(95, 190, 0);
+}
+
+.main-btn__hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.main-started {
+  align-self: center;
+  font-size: 3rem;
+  color: #ddd;
+  margin-bottom: 4rem;
+}
+
+.main-started:hover {
+  cursor: default;
+}
+
+.main-started__hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
   gap: 3rem 5rem;
   justify-content: center;
-  padding: 20rem 5rem;
+  padding: 20rem 5rem 0;
 }
 
 .day {
@@ -103,11 +159,41 @@ main {
   justify-content: space-evenly;
   margin-bottom: 2rem;
   padding: 3rem 0;
+  position: relative;
 }
-/* 
+
 .day:hover {
+  cursor: default;
+}
+
+.day-checked {
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+  color: lawngreen;
+}
+
+.day-unchecked {
+  display: none;
+  visibility: hidden;
+}
+
+.day-btn {
+  background-color: lawngreen;
+  color: #000;
+  padding: .5rem .75rem;
+  border-radius: 2px;
+  margin-top: 1rem;
+}
+
+.day-btn__hidden {
+  display: none;
+}
+
+.day-btn:hover {
+  background-color: rgb(95, 190, 0);
   cursor: pointer;
-} */
+}
 
 .day > *:not(:last-child) {
   margin-bottom: 1rem;
@@ -173,7 +259,7 @@ footer a {
     flex-direction: column;
   }
 
-  main {
+  .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 300px));
     justify-content: center;

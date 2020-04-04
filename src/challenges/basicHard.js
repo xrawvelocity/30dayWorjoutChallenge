@@ -7,6 +7,7 @@ let arr = [];
 for (let day = 1; day < 31; day++) {
   if (day % 7) {
     arr.push({
+      id: day + 60,
       day: day,
       pushups: pushups,
       pullups: pullups,
@@ -28,4 +29,4 @@ for (let day = 1; day < 31; day++) {
   }
 }
 
-module.exports = arr
+module.exports = arr;
