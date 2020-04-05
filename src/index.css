@@ -36,26 +36,23 @@ body {
   color: lawngreen;
 }
 
-body::-webkit-scrollbar-track
-{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    border-radius: 10px;
-    background-color: #000;
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #000;
 }
 
-body::-webkit-scrollbar
-{
-    width: 7px;
-    background-color: #000;
+body::-webkit-scrollbar {
+  width: 7px;
+  background-color: #000;
 }
 
-body::-webkit-scrollbar-thumb
-{
-    border-radius: 2px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    background-color: lawngreen;
+body::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: lawngreen;
 }
 
 nav {
@@ -210,7 +207,7 @@ nav ul {
   background-color: #333;
   border-radius: 2px;
   color: #ddd;
-  padding: 1rem .3rem 1rem 1rem;
+  padding: 1rem 0.3rem 1rem 1rem;
 }
 
 .main-form .day-btn {
@@ -291,7 +288,7 @@ nav ul {
 .day-btn {
   background-color: lawngreen;
   color: #000;
-  padding: .5rem .75rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 2px;
   margin-top: 1rem;
 }
@@ -362,7 +359,9 @@ footer a {
     justify-content: space-between;
   }
 
-  .title {
+  .title,
+  .title:link,
+  .title:visited {
     font-size: 2rem;
     padding: 2rem 15rem 2rem 12%;
     text-transform: uppercase;
@@ -403,10 +402,10 @@ footer a {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 20rem 0 3rem;
+    margin: 15rem 0 3rem;
     font-size: 1.6rem;
   }
-  
+
   .main-btn {
     background-color: lawngreen;
     color: #000;
@@ -414,17 +413,17 @@ footer a {
     border-radius: 2px;
     margin-top: 1rem;
   }
-  
+
   .main-btn:hover {
     cursor: pointer;
     background-color: rgb(95, 190, 0);
   }
-  
+
   .main-btn__hidden {
     display: none;
     visibility: hidden;
   }
-  
+
   .main-started {
     align-self: center;
     font-size: 1.6rem;
