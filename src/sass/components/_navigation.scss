@@ -1,0 +1,60 @@
+nav {
+  padding: 2rem 15rem;
+  background-color: black;
+  color: aliceblue;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10000;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title,
+.title:link,
+.title:visited {
+  text-decoration: none;
+  color: #ddd;
+  font-size: 4rem;
+  text-transform: uppercase;
+}
+
+.title:hover {
+  cursor: pointer;
+}
+
+.title-green {
+  color: lawngreen !important;
+}
+
+.link,
+.selected {
+  margin: 3rem;
+  font-size: 3rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid lawngreen;
+}
+
+.link:hover {
+  cursor: pointer;
+  color: lawngreen;
+}
+
+.selected {
+  color: lawngreen !important;
+}
+
+.selected:hover {
+  cursor: default;
+}
