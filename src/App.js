@@ -1,313 +1,198 @@
 import React, { Component, Fragment } from "react";
 
-const basicEasy = require("./challenges/basicEasy");
-
-const basicNormal = require("./challenges/basicNormal");
-
-const basicHard = require("./challenges/basicHard");
-
 let curYear = new Date().getFullYear();
 
-let idsEasy = JSON.parse(localStorage.getItem("idsEasy"));
+let ids = JSON.parse(localStorage.getItem("ids"));
 
-if (!idsEasy) idsEasy = [0];
+if (!ids) ids = [0];
 
-let idsNormal = JSON.parse(localStorage.getItem("idsNormal"));
+let startTime = localStorage.getItem("startTime");
 
-if (!idsNormal) idsNormal = [0];
+let started;
 
-let idsHard = JSON.parse(localStorage.getItem("idsHard"));
+startTime ? (started = true) : (started = false);
 
-if (!idsHard) idsHard = [0];
+let finishTime = localStorage.getItem("finishTime");
 
-let startTimeEasy = localStorage.getItem("startTimeEasy");
+let pushupsEdit = localStorage.getItem("pushupsEdit");
+let pullupsEdit = localStorage.getItem("pullupsEdit");
+let legraisesEdit = localStorage.getItem("legraisesEdit");
+let squatsEdit = localStorage.getItem("squatsEdit");
+!pushupsEdit
+  ? (pushupsEdit = 0)
+  : (pushupsEdit = localStorage.getItem("pushupsEdit"));
+!pullupsEdit
+  ? (pullupsEdit = 0)
+  : (pullupsEdit = localStorage.getItem("pullupsEdit"));
+!legraisesEdit
+  ? (legraisesEdit = 0)
+  : (legraisesEdit = localStorage.getItem("legraisesEdit"));
+!squatsEdit
+  ? (squatsEdit = 0)
+  : (squatsEdit = localStorage.getItem("squatsEdit"));
 
-let startedEasy;
+let initialPushups = localStorage.getItem("initialPushups");
+!initialPushups
+  ? (initialPushups = 200)
+  : (initialPushups = localStorage.getItem("initialPushups"));
 
-startTimeEasy ? (startedEasy = true) : (startedEasy = false);
+let addedPushups = localStorage.getItem("initialPushups");
+!addedPushups
+  ? (addedPushups = 25)
+  : (addedPushups = localStorage.getItem("addedPushups"));
 
-let finishTimeEasy = localStorage.getItem("finishTimeEasy");
+let initialPullups = localStorage.getItem("initialPullups");
+!initialPullups
+  ? (initialPullups = 100)
+  : (initialPullups = localStorage.getItem("initialPullups"));
 
-let startTimeNormal = localStorage.getItem("startTimeNormal");
+let addedPullups = localStorage.getItem("addedPullups");
+!addedPullups
+  ? (addedPullups = 5)
+  : (addedPullups = localStorage.getItem("addedPullups"));
 
-let startedNormal;
+let initialLegraises = localStorage.getItem("initialLegraises");
+!initialLegraises
+  ? (initialLegraises = 200)
+  : (initialLegraises = localStorage.getItem("initialLegraises"));
 
-startTimeNormal ? (startedNormal = true) : (startedNormal = false);
+let addedLegraises = localStorage.getItem("addedLegraises");
+!addedLegraises
+  ? (addedLegraises = 25)
+  : (addedLegraises = localStorage.getItem("addedLegraises"));
 
-let finishTimeNormal = localStorage.getItem("finishTimeNormal");
+let initialSquats = localStorage.getItem("initialSquats");
+!initialSquats
+  ? (initialSquats = 100)
+  : (initialSquats = localStorage.getItem("initialSquats"));
 
-let startTimeHard = localStorage.getItem("startTimeHard");
-
-let startedHard;
-
-startTimeHard ? (startedHard = true) : (startedHard = false);
-
-let finishTimeHard = localStorage.getItem("finishTimeHard");
-
-let pushupsEditHard = localStorage.getItem("pushupsEditHard");
-let pullupsEditHard = localStorage.getItem("pullupsEditHard");
-let legraisesEditHard = localStorage.getItem("legraisesEditHard");
-let squatsEditHard = localStorage.getItem("squatsEditHard");
-!pushupsEditHard
-  ? (pushupsEditHard = 0)
-  : (pushupsEditHard = localStorage.getItem("pushupsEditHard"));
-!pullupsEditHard
-  ? (pullupsEditHard = 0)
-  : (pullupsEditHard = localStorage.getItem("pullupsEditHard"));
-!legraisesEditHard
-  ? (legraisesEditHard = 0)
-  : (legraisesEditHard = localStorage.getItem("legraisesEditHard"));
-!squatsEditHard
-  ? (squatsEditHard = 0)
-  : (squatsEditHard = localStorage.getItem("squatsEditHard"));
-let pushupsEditNormal = localStorage.getItem("pushupsEditNormal");
-let pullupsEditNormal = localStorage.getItem("pullupsEditNormal");
-let legraisesEditNormal = localStorage.getItem("legraisesEditNormal");
-let squatsEditNormal = localStorage.getItem("squatsEditNormal");
-!pushupsEditNormal
-  ? (pushupsEditNormal = 0)
-  : (pushupsEditNormal = localStorage.getItem("pushupsEditNormal"));
-!pullupsEditNormal
-  ? (pullupsEditNormal = 0)
-  : (pullupsEditNormal = localStorage.getItem("pullupsEditNormal"));
-!legraisesEditNormal
-  ? (legraisesEditNormal = 0)
-  : (legraisesEditNormal = localStorage.getItem("legraisesEditNormal"));
-!squatsEditNormal
-  ? (squatsEditNormal = 0)
-  : (squatsEditNormal = localStorage.getItem("squatsEditNormal"));
-let pushupsEditEasy = localStorage.getItem("pushupsEditEasy");
-let pullupsEditEasy = localStorage.getItem("pullupsEditEasy");
-let legraisesEditEasy = localStorage.getItem("legraisesEditEasy");
-let squatsEditEasy = localStorage.getItem("squatsEditEasy");
-!pushupsEditEasy
-  ? (pushupsEditEasy = 0)
-  : (pushupsEditEasy = localStorage.getItem("pushupsEditEasy"));
-!pullupsEditEasy
-  ? (pullupsEditEasy = 0)
-  : (pullupsEditEasy = localStorage.getItem("pullupsEditEasy"));
-!legraisesEditEasy
-  ? (legraisesEditEasy = 0)
-  : (legraisesEditEasy = localStorage.getItem("legraisesEditEasy"));
-!squatsEditEasy
-  ? (squatsEditEasy = 0)
-  : (squatsEditEasy = localStorage.getItem("squatsEditEasy"));
+let addedSquats = localStorage.getItem("addedSquats");
+!addedSquats
+  ? (addedSquats = 5)
+  : (addedSquats = localStorage.getItem("addedSquats"));
 
 export default class App extends Component {
   state = {
-    difficulty: basicHard,
+    start: started,
 
-    startEasy: startedEasy,
-    startNormal: startedNormal,
-    startHard: startedHard,
+    time: startTime,
 
-    timeEasy: startTimeEasy,
-    timeNormal: startTimeNormal,
-    timeHard: startTimeHard,
-
-    idsEasy: [...idsEasy],
-    idsNormal: [...idsNormal],
-    idsHard: [...idsHard],
-    allIds: [...idsEasy, ...idsNormal, ...idsHard],
+    ids: [...ids],
 
     edit: false,
 
-    pushupsEditHard: pushupsEditHard,
-    pullupsEditHard: pullupsEditHard,
-    legraisesEditHard: legraisesEditHard,
-    squatsEditHard: squatsEditHard,
+    pushupsEdit: pushupsEdit,
+    pullupsEdit: pullupsEdit,
+    legraisesEdit: legraisesEdit,
+    squatsEdit: squatsEdit,
 
-    pushupsEditNormal: pushupsEditNormal,
-    pullupsEditNormal: pullupsEditNormal,
-    legraisesEditNormal: legraisesEditNormal,
-    squatsEditNormal: squatsEditNormal,
+    initialPushups,
+    addedPushups,
 
-    pushupsEditEasy: pushupsEditEasy,
-    pullupsEditEasy: pullupsEditEasy,
-    legraisesEditEasy: legraisesEditEasy,
-    squatsEditEasy: squatsEditEasy
+    initialPullups,
+    addedPullups,
+
+    initialLegraises,
+    addedLegraises,
+
+    initialSquats,
+    addedSquats
   };
 
   componentDidMount() {
-    if (!idsEasy) idsEasy = [0];
+    if (!ids) ids = [0];
     else {
-      idsEasy = JSON.parse(localStorage.getItem("idsEasy"));
-    }
-    if (!idsNormal) idsNormal = [0];
-    else {
-      idsNormal = JSON.parse(localStorage.getItem("idsNormal"));
-    }
-    if (!idsHard) idsHard = [0];
-    else {
-      idsHard = JSON.parse(localStorage.getItem("idsHard"));
+      ids = JSON.parse(localStorage.getItem("ids"));
     }
   }
+
   renderWorkouts = () => {
-    return this.state.difficulty.map(eachDay => {
-      if (this.state.difficulty === basicEasy) {
-        if (!eachDay.rest) {
-          return (
-            <div className="day">
+    // eslint-disable-next-line array-callback-return
+
+    let pushups = Number(this.state.initialPushups);
+    let pullups = Number(this.state.initialPullups);
+    let legraises = Number(this.state.initialLegraises);
+    let squats = Number(this.state.initialSquats);
+    let arr = [];
+
+    for (let day = 1; day < 31; day++) {
+      if (day % 7) {
+        arr.push({
+          id: day,
+          day: day,
+          pushups: pushups,
+          pullups: pullups,
+          squats: squats,
+          legraises: legraises,
+          rest: false,
+          checked: true
+        });
+        pushups += Number(this.state.addedPushups);
+        pullups += Number(this.state.addedPullups);
+        legraises += Number(this.state.addedLegraises);
+        squats += Number(this.state.addedSquats);
+      } else {
+        arr.push({
+          day: day,
+          rest: true,
+          checked: false
+        });
+      }
+    }
+
+    return arr.map(eachDay => {
+      if (!eachDay.rest) {
+        return (
+          <div className="day">
+            <div
+              className={
+                this.state.ids.includes(eachDay.id)
+                  ? "day-checked"
+                  : "day-unchecked"
+              }
+            >
+              &#10004;
+            </div>
+            <h2>Day {eachDay.day}:</h2>
+            <p>Pushups: {eachDay.pushups}</p>
+            <p>Pullups: {eachDay.pullups}</p>
+            <p>Leg Raises: {eachDay.legraises}</p>
+            <p>Squats: {eachDay.squats}</p>
+            {this.state.start ? (
               <div
                 className={
-                  this.state.allIds.includes(eachDay.id)
-                    ? "day-checked"
-                    : "day-unchecked"
+                  this.state.ids.includes(eachDay.id)
+                    ? "day-btn__hidden"
+                    : "day-btn"
                 }
+                onClick={() => this.addToDone(eachDay)}
               >
-                &#10004;
+                Done
               </div>
-              <h2>Day {eachDay.day}:</h2>
-              <p>Pushups: {eachDay.pushups}</p>
-              <p>Pullups: {eachDay.pullups}</p>
-              <p>Leg Raises: {eachDay.legraises}</p>
-              <p>Squats: {eachDay.squats}</p>
-              {this.state.startEasy ? (
-                <div
-                  className={
-                    this.state.allIds.includes(eachDay.id)
-                      ? "day-btn__hidden"
-                      : "day-btn"
-                  }
-                  onClick={() => this.addToDoneEasy(eachDay)}
-                >
-                  Done
-                </div>
-              ) : null}
-            </div>
-          );
-        } else {
-          return (
-            <div className="day">
-              <h2>Day {eachDay.day}:</h2>
-              <p>REST DAY</p>
-              <p>You've earned it!</p>
-            </div>
-          );
-        }
-      } else if (this.state.difficulty === basicNormal) {
-        if (!eachDay.rest) {
-          return (
-            <div className="day">
-              <div
-                className={
-                  this.state.allIds.includes(eachDay.id)
-                    ? "day-checked"
-                    : "day-unchecked"
-                }
-              >
-                &#10004;
-              </div>
-              <h2>Day {eachDay.day}:</h2>
-              <p>Pushups: {eachDay.pushups}</p>
-              <p>Pullups: {eachDay.pullups}</p>
-              <p>Leg Raises: {eachDay.legraises}</p>
-              <p>Squats: {eachDay.squats}</p>
-              {this.state.startNormal ? (
-                <div
-                  className={
-                    this.state.allIds.includes(eachDay.id)
-                      ? "day-btn__hidden"
-                      : "day-btn"
-                  }
-                  onClick={() => this.addToDoneNormal(eachDay)}
-                >
-                  Done
-                </div>
-              ) : null}
-            </div>
-          );
-        } else {
-          return (
-            <div className="day">
-              <h2>Day {eachDay.day}:</h2>
-              <p>REST DAY</p>
-              <p>You've earned it!</p>
-            </div>
-          );
-        }
-      } else if (this.state.difficulty === basicHard) {
-        if (!eachDay.rest) {
-          return (
-            <div className="day">
-              <div
-                className={
-                  this.state.allIds.includes(eachDay.id)
-                    ? "day-checked"
-                    : "day-unchecked"
-                }
-              >
-                &#10004;
-              </div>
-              <h2>Day {eachDay.day}:</h2>
-              <p>Pushups: {eachDay.pushups}</p>
-              <p>Pullups: {eachDay.pullups}</p>
-              <p>Leg Raises: {eachDay.legraises}</p>
-              <p>Squats: {eachDay.squats}</p>
-              {this.state.startHard ? (
-                <div
-                  className={
-                    this.state.allIds.includes(eachDay.id)
-                      ? "day-btn__hidden"
-                      : "day-btn"
-                  }
-                  onClick={() => this.addToDoneHard(eachDay)}
-                >
-                  Done
-                </div>
-              ) : null}
-            </div>
-          );
-        } else {
-          return (
-            <div className="day">
-              <h2>Day {eachDay.day}:</h2>
-              <p>REST DAY</p>
-              <p>You've earned it!</p>
-            </div>
-          );
-        }
+            ) : null}
+          </div>
+        );
+      } else {
+        return (
+          <div className="day">
+            <h2>Day {eachDay.day}:</h2>
+            <p>REST DAY</p>
+            <p>You've earned it!</p>
+          </div>
+        );
       }
     });
   };
 
-  addToDoneEasy = async eachDay => {
-    let copyArray = [...this.state.idsEasy];
+  addToDone = async eachDay => {
+    let copyArray = [...this.state.ids];
     await copyArray.push(eachDay.id);
     let filteredArray = copyArray.filter(function(item, pos) {
       return copyArray.indexOf(item) === pos;
     });
-    console.log(filteredArray);
-    await localStorage.setItem("idsEasy", JSON.stringify(filteredArray));
+    await localStorage.setItem("ids", JSON.stringify(filteredArray));
 
-    await this.setState({ idsEasy: filteredArray });
-    await this.setState({ allIds: [...this.state.idsEasy] });
-  };
-
-  addToDoneNormal = async eachDay => {
-    let copyArray = [...this.state.idsNormal];
-    await copyArray.push(eachDay.id);
-    let filteredArray = copyArray.filter(function(item, pos) {
-      return copyArray.indexOf(item) === pos;
-    });
-    console.log(filteredArray);
-    await localStorage.setItem("idsNormal", JSON.stringify(filteredArray));
-
-    await this.setState({ idsNormal: filteredArray });
-    await this.setState({ allIds: [...this.state.idsNormal] });
-  };
-
-  addToDoneHard = async eachDay => {
-    let copyArray = [...this.state.idsHard];
-    await copyArray.push(eachDay.id);
-    let filteredArray = copyArray.filter(function(item, pos) {
-      return copyArray.indexOf(item) === pos;
-    });
-    console.log(filteredArray);
-    await localStorage.setItem("idsHard", JSON.stringify(filteredArray));
-
-    await this.setState({ idsHard: filteredArray });
-    await this.setState({ allIds: [...this.state.idsHard] });
+    await this.setState({ ids: filteredArray });
   };
 
   handleChange = e => {
@@ -317,38 +202,36 @@ export default class App extends Component {
 
     this.setState({ [name]: value });
   };
-  handleSubmitHard = async () => {
-    await localStorage.setItem("pushupsEditHard", this.state.pushupsEditHard);
-    await localStorage.setItem("pullupsEditHard", this.state.pullupsEditHard);
-    await localStorage.setItem(
-      "legraisesEditHard",
-      this.state.legraisesEditHard
-    );
-    await localStorage.setItem("squatsEditHard", this.state.squatsEditHard);
+
+  handleSubmit = async () => {
+    await localStorage.setItem("pushupsEdit", this.state.pushupsEdit);
+    await localStorage.setItem("pullupsEdit", this.state.pullupsEdit);
+    await localStorage.setItem("legraisesEdit", this.state.legraisesEdit);
+    await localStorage.setItem("squatsEdit", this.state.squatsEdit);
   };
-  handleSubmitNormal = async () => {
-    await localStorage.setItem(
-      "pushupsEditNormal",
-      this.state.pushupsEditNormal
-    );
-    await localStorage.setItem(
-      "pullupsEditNormal",
-      this.state.pullupsEditNormal
-    );
-    await localStorage.setItem(
-      "legraisesEditNormal",
-      this.state.legraisesEditNormal
-    );
-    await localStorage.setItem("squatsEditNormal", this.state.squatsEditNormal);
-  };
-  handleSubmitEasy = async () => {
-    await localStorage.setItem("pushupsEditEasy", this.state.pushupsEditEasy);
-    await localStorage.setItem("pullupsEditEasy", this.state.pullupsEditEasy);
-    await localStorage.setItem(
-      "legraisesEditEasy",
-      this.state.legraisesEditEasy
-    );
-    await localStorage.setItem("squatsEditEasy", this.state.squatsEditEasy);
+
+  handleSubmitEdit = async () => {
+    await localStorage.setItem("initialPushups", this.state.initialPushups);
+    await localStorage.setItem("initialPullups", this.state.initialPullups);
+    await localStorage.setItem("initialLegraises", this.state.initialLegraises);
+    await localStorage.setItem("initialSquats", this.state.initialSquats);
+
+    await localStorage.setItem("addedPushups", this.state.addedPushups);
+    await localStorage.setItem("addedPullups", this.state.addedPullups);
+    await localStorage.setItem("addedLegraises", this.state.addedLegraises);
+    await localStorage.setItem("addedSquats", this.state.addedSquats);
+
+    await this.setState({
+      initialPushups: this.state.initialPushups,
+      initialPullups: this.state.initialPullups,
+      initialLegraises: this.state.initialLegraises,
+      initialSquats: this.state.initialSquats,
+
+      addedPushups: this.state.addedPushups,
+      addedPullups: this.state.addedPullups,
+      addedLegraises: this.state.addedLegraises,
+      addedSquats: this.state.addedSquats
+    });
   };
 
   render() {
@@ -363,7 +246,7 @@ export default class App extends Component {
               </a>
             </div>
             <ul>
-              <li
+              {/* <li
                 onClick={() => this.setState({ difficulty: basicEasy })}
                 className={
                   this.state.difficulty === basicEasy ? "selected" : "link"
@@ -378,440 +261,255 @@ export default class App extends Component {
                 }
               >
                 Normal
-              </li>
-              <li
-                onClick={() => this.setState({ difficulty: basicHard })}
+              </li> */}
+              {/* <li
+                onClick={() => this.setState({ difficulty: basic })}
                 className={
-                  this.state.difficulty === basicHard ? "selected" : "link"
+                  this.state.difficulty === basic ? "selected" : "link"
                 }
               >
                 Hard
-              </li>
+              </li> */}
             </ul>
           </div>
         </nav>
         <main id="top">
-          {/* ON DIFFICULTY HARD */}
-          {this.state.difficulty === basicHard ? (
-            <div className="main-top">
-              <section className="main-btns">
-                <div
-                  className={
-                    this.state.startHard ? "main-btn__hidden" : "main-btn"
-                  }
-                  onClick={async () => {
-                    let date = new Date().toLocaleString("en-US", {
-                      timeZone: "America/New_York"
-                    });
-                    await localStorage.setItem("startTimeHard", date);
+          <div className="main-top">
+            <section className="main-btns">
+              <div
+                className={this.state.start ? "main-btn__hidden" : "main-btn"}
+                onClick={async () => {
+                  let date = new Date().toLocaleString("en-US", {
+                    timeZone: "America/New_York"
+                  });
+                  await localStorage.setItem("startTime", date);
 
-                    this.setState({ startHard: true, timeHard: date });
-                  }}
-                >
-                  START
-                </div>
-                <div
-                  className={
-                    !this.state.startHard ? "main-btn__hidden" : "main-btn"
-                  }
-                  onClick={async () => {
-                    await localStorage.removeItem("idsHard");
-                    await localStorage.removeItem("startTimeHard");
-
-                    await localStorage.removeItem("pushupsEditHard");
-                    await localStorage.removeItem("pullupsEditHard");
-                    await localStorage.removeItem("legraisesEditHard");
-                    await localStorage.removeItem("squatsEditHard");
-
-                    if (!idsHard) idsHard = [0];
-                    else {
-                      idsHard = JSON.parse(localStorage.getItem("idsHard"));
-                    }
-                    await this.setState({ startHard: false, idsHard: [0] });
-                    await this.setState({
-                      allIds: [...this.state.idsEasy, ...this.state.idsNormal],
-                      pushupsEditHard: 0,
-                      pullupsEditHard: 0,
-                      legraisesEditHard: 0,
-                      squatsEditHard: 0,
-                      edit: false
-                    });
-                  }}
-                >
-                  RESET
-                </div>
-                <div
-                  className={
-                    this.state.startHard
-                      ? "main-current"
-                      : "main-current__hidden"
-                  }
-                >
-                  <h2>Current Count</h2>
-                  {this.state.edit ? (
-                    <form className="main-form">
-                      <div className="main-form--group">
-                        <label for="pushupsEditHard">Pushups: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="pushupsEditHard"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div className="main-form--group">
-                        <label for="pullupsEditHard">Pullups: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="pullupsEditHard"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div className="main-form--group">
-                        <label for="legraisesEditHard">Leg Raises: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="legraisesEditHard"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div className="main-form--group">
-                        <label for="squatsEditHard">Squats: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="squatsEditHard"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div
-                        className="day-btn"
-                        onClick={() => {
-                          this.handleSubmitHard();
-                          this.setState({ edit: false });
-                        }}
-                      >
-                        Save
-                      </div>
-                    </form>
-                  ) : (
-                    <div className="main-current__saved">
-                      <p>Pushups: {this.state.pushupsEditHard}</p>
-                      <p>Pullups: {this.state.pullupsEditHard}</p>
-                      <p>Leg raises: {this.state.legraisesEditHard}</p>
-                      <p>Squats: {this.state.squatsEditHard}</p>
-                      <div
-                        className="day-btn"
-                        onClick={() => this.setState({ edit: true })}
-                      >
-                        Edit
-                      </div>
+                  this.setState({ start: true, time: date, edit: false });
+                }}
+              >
+                START
+              </div>
+              <div
+                className={
+                  !this.state.start ? "main-current" : "main-current__hidden"
+                }
+              >
+                <h2>Edit Workout</h2>
+                {this.state.edit ? (
+                  <form className="main-form">
+                    <div className="main-form--group">
+                      <label for="initialPushups">Pushups: </label>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="initialPushups"
+                        placeholder={this.state.initialPushups}
+                      />
+                      <span className="main-form--group__plus">+</span>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="addedPushups"
+                        placeholder={this.state.addedPushups}
+                      />
                     </div>
-                  )}
-                </div>
-              </section>
-              <p
-                className={
-                  this.state.startHard ? "main-started" : "main-started__hidden"
-                }
-              >
-                Started Challenge at: {this.state.timeHard}
-              </p>
-              <p
-                className={
-                  this.state.finishHard
-                    ? "main-finished"
-                    : "main-finished__hidden"
-                }
-              >
-                Finished Challenge at: {finishTimeHard}
-              </p>
-            </div>
-          ) : null}
-
-          {/* ON DIFFICULTY NORMAL */}
-          {this.state.difficulty === basicNormal ? (
-            <div className="main-top">
-              <section className="main-btns">
-                <div
-                  className={
-                    this.state.startNormal ? "main-btn__hidden" : "main-btn"
-                  }
-                  onClick={async () => {
-                    let date = new Date().toLocaleString("en-US", {
-                      timeZone: "America/New_York"
-                    });
-                    await localStorage.setItem("startTimeNormal", date);
-
-                    this.setState({ startNormal: true, timeNormal: date });
-                  }}
-                >
-                  START
-                </div>
-                <div
-                  className={
-                    !this.state.startNormal ? "main-btn__hidden" : "main-btn"
-                  }
-                  onClick={async () => {
-                    await localStorage.removeItem("idsNormal");
-                    await localStorage.removeItem("startTimeNormal");
-
-                    await localStorage.removeItem("pushupsEditNormal");
-                    await localStorage.removeItem("pullupsEditNormal");
-                    await localStorage.removeItem("legraisesEditNormal");
-                    await localStorage.removeItem("squatsEditNormal");
-
-                    if (!idsNormal) idsNormal = [0];
-                    else {
-                      idsNormal = JSON.parse(localStorage.getItem("idsNormal"));
-                    }
-                    await this.setState({ startNormal: false, idsNormal: [0] });
-                    await this.setState({
-                      allIds: [...this.state.idsEasy, ...this.state.idsHard],
-                      pushupsEditNormal: 0,
-                      pullupsEditNormal: 0,
-                      legraisesEditNormal: 0,
-                      squatsEditNormal: 0,
-                      edit: false
-                    });
-                  }}
-                >
-                  RESET
-                </div>
-                <div
-                  className={
-                    this.state.startNormal
-                      ? "main-current"
-                      : "main-current__hidden"
-                  }
-                >
-                  <h2>Current Count</h2>
-                  {this.state.edit ? (
-                    <form className="main-form">
-                      <div className="main-form--group">
-                        <label for="pushupsEditNormal">Pushups: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="pushupsEditNormal"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div className="main-form--group">
-                        <label for="pullupsEditNormal">Pullups: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="pullupsEditNormal"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div className="main-form--group">
-                        <label for="legraisesEditNormal">Leg Raises: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="legraisesEditNormal"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div className="main-form--group">
-                        <label for="squatsEditNormal">Squats: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="squatsEditNormal"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div
-                        className="day-btn"
-                        onClick={() => {
-                          this.handleSubmitNormal();
-                          this.setState({ edit: false });
-                        }}
-                      >
-                        Save
-                      </div>
-                    </form>
-                  ) : (
-                    <div className="main-current__saved">
-                      <p>Pushups: {this.state.pushupsEditNormal}</p>
-                      <p>Pullups: {this.state.pullupsEditNormal}</p>
-                      <p>Leg raises: {this.state.legraisesEditNormal}</p>
-                      <p>Squats: {this.state.squatsEditNormal}</p>
-                      <div
-                        className="day-btn"
-                        onClick={() => this.setState({ edit: true })}
-                      >
-                        Edit
-                      </div>
+                    <div className="main-form--group">
+                      <label for="initialPullups">Pullups: </label>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="initialPullups"
+                        placeholder={this.state.initialPullups}
+                      />
+                      <span className="main-form--group__plus">+</span>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="addedPullups"
+                        placeholder={this.state.addedPullups}
+                      />
                     </div>
-                  )}
-                </div>
-              </section>
-              <p
-                className={
-                  this.state.startNormal
-                    ? "main-started"
-                    : "main-started__hidden"
-                }
-              >
-                Started Challenge at: {this.state.timeNormal}
-              </p>
-              <p
-                className={
-                  this.state.finishNormal
-                    ? "main-finished"
-                    : "main-finished__hidden"
-                }
-              >
-                Finished Challenge at: {finishTimeNormal}
-              </p>
-            </div>
-          ) : null}
-
-          {/* ON DIFFICULTY EASY */}
-          {this.state.difficulty === basicEasy ? (
-            <div className="main-top">
-              <section className="main-btns">
-                <div
-                  className={
-                    this.state.startEasy ? "main-btn__hidden" : "main-btn"
-                  }
-                  onClick={async () => {
-                    let date = new Date().toLocaleString("en-US", {
-                      timeZone: "America/New_York"
-                    });
-                    await localStorage.setItem("startTimeEasy", date);
-
-                    this.setState({ startEasy: true, timeEasy: date });
-                  }}
-                >
-                  START
-                </div>
-                <div
-                  className={
-                    !this.state.startEasy ? "main-btn__hidden" : "main-btn"
-                  }
-                  onClick={async () => {
-                    await localStorage.removeItem("idsEasy");
-                    await localStorage.removeItem("startTimeEasy");
-
-                    await localStorage.removeItem("pushupsEditEasy");
-                    await localStorage.removeItem("pullupsEditEasy");
-                    await localStorage.removeItem("legraisesEditEasy");
-                    await localStorage.removeItem("squatsEditEasy");
-
-                    if (!idsEasy) idsEasy = [0];
-                    else {
-                      idsEasy = JSON.parse(localStorage.getItem("idsEasy"));
-                    }
-                    await this.setState({ startEasy: false, idsEasy: [0] });
-                    await this.setState({
-                      allIds: [...this.state.idsNormal, ...this.state.idsHard],
-                      pushupsEditEasy: 0,
-                      pullupsEditEasy: 0,
-                      legraisesEditEasy: 0,
-                      squatsEditEasy: 0,
-                      edit: false
-                    });
-                  }}
-                >
-                  RESET
-                </div>
-                <div
-                  className={
-                    this.state.startEasy
-                      ? "main-current"
-                      : "main-current__hidden"
-                  }
-                >
-                  <h2>Current Count</h2>
-                  {this.state.edit ? (
-                    <form className="main-form">
-                      <div className="main-form--group">
-                        <label for="pushupsEditEasy">Pushups: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="pushupsEditEasy"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div className="main-form--group">
-                        <label for="pullupsEditEasy">Pullups: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="pullupsEditEasy"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div className="main-form--group">
-                        <label for="legraisesEditEasy">Leg Raises: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="legraisesEditEasy"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div className="main-form--group">
-                        <label for="squatsEditEasy">Squats: </label>
-                        <input
-                          onChange={this.handleChange}
-                          type="number"
-                          name="squatsEditEasy"
-                          placeholder="0"
-                        />
-                      </div>
-                      <div
-                        className="day-btn"
-                        onClick={() => {
-                          this.handleSubmitEasy();
-                          this.setState({ edit: false });
-                        }}
-                      >
-                        Save
-                      </div>
-                    </form>
-                  ) : (
-                    <div className="main-current__saved">
-                      <p>Pushups: {this.state.pushupsEditEasy}</p>
-                      <p>Pullups: {this.state.pullupsEditEasy}</p>
-                      <p>Leg raises: {this.state.legraisesEditEasy}</p>
-                      <p>Squats: {this.state.squatsEditEasy}</p>
-                      <div
-                        className="day-btn"
-                        onClick={() => this.setState({ edit: true })}
-                      >
-                        Edit
-                      </div>
+                    <div className="main-form--group">
+                      <label for="initialLegraises">Leg Raises: </label>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="initialLegraises"
+                        placeholder={this.state.initialLegraises}
+                      />
+                      <span className="main-form--group__plus">+</span>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="addedLegraises"
+                        placeholder={this.state.addedLegraises}
+                      />
                     </div>
-                  )}
-                </div>
-              </section>
-              <p
+                    <div className="main-form--group">
+                      <label for="initialSquats">Squats: </label>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="initialSquats"
+                        placeholder={this.state.initialSquats}
+                      />
+                      <span className="main-form--group__plus">+</span>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="addedSquats"
+                        placeholder={this.state.addedSquats}
+                      />
+                    </div>
+                    <div
+                      className="day-btn"
+                      onClick={() => {
+                        this.handleSubmitEdit();
+                        this.setState({ edit: false });
+                      }}
+                    >
+                      Save
+                    </div>
+                  </form>
+                ) : (
+                  <div className="main-current__saved">
+                    <p>
+                      Pushups: {this.state.initialPushups} +{" "}
+                      {this.state.addedPushups}
+                    </p>
+                    <p>
+                      Pullups: {this.state.initialPullups} +{" "}
+                      {this.state.addedPullups}
+                    </p>
+                    <p>
+                      Leg raises: {this.state.initialLegraises} +{" "}
+                      {this.state.addedLegraises}
+                    </p>
+                    <p>
+                      Squats: {this.state.initialSquats} +{" "}
+                      {this.state.addedSquats}
+                    </p>
+                    <div
+                      className="day-btn"
+                      onClick={() => this.setState({ edit: true })}
+                    >
+                      Edit
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div
+                className={!this.state.start ? "main-btn__hidden" : "main-btn"}
+                onClick={async () => {
+                  await localStorage.removeItem("ids");
+                  await localStorage.removeItem("startTime");
+
+                  await localStorage.removeItem("pushupsEdit");
+                  await localStorage.removeItem("pullupsEdit");
+                  await localStorage.removeItem("legraisesEdit");
+                  await localStorage.removeItem("squatsEdit");
+
+                  if (!ids) ids = [0];
+                  else {
+                    ids = JSON.parse(localStorage.getItem("ids"));
+                  }
+                  await this.setState({ start: false, ids: [0] });
+                  await this.setState({
+                    pushupsEdit: 0,
+                    pullupsEdit: 0,
+                    legraisesEdit: 0,
+                    squatsEdit: 0,
+                    edit: false
+                  });
+                }}
+              >
+                RESET
+              </div>
+              <div
                 className={
-                  this.state.startEasy ? "main-started" : "main-started__hidden"
+                  this.state.start ? "main-current" : "main-current__hidden"
                 }
               >
-                Started Challenge at: {this.state.timeEasy}
-              </p>
-              <p
-                className={
-                  this.state.finishEasy
-                    ? "main-finished"
-                    : "main-finished__hidden"
-                }
-              >
-                Finished Challenge at: {finishTimeEasy}
-              </p>
-            </div>
-          ) : null}
+                <h2>Current Count</h2>
+                {this.state.edit ? (
+                  <form className="main-form">
+                    <div className="main-form--group">
+                      <label for="pushupsEdit">Pushups: </label>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="pushupsEdit"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div className="main-form--group">
+                      <label for="pullupsEdit">Pullups: </label>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="pullupsEdit"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div className="main-form--group">
+                      <label for="legraisesEdit">Leg Raises: </label>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="legraisesEdit"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div className="main-form--group">
+                      <label for="squatsEdit">Squats: </label>
+                      <input
+                        onChange={this.handleChange}
+                        type="number"
+                        name="squatsEdit"
+                        placeholder="0"
+                      />
+                    </div>
+                    <div
+                      className="day-btn"
+                      onClick={() => {
+                        this.handleSubmit();
+                        this.setState({ edit: false });
+                      }}
+                    >
+                      Save
+                    </div>
+                  </form>
+                ) : (
+                  <div className="main-current__saved">
+                    <p>Pushups: {this.state.pushupsEdit}</p>
+                    <p>Pullups: {this.state.pullupsEdit}</p>
+                    <p>Leg raises: {this.state.legraisesEdit}</p>
+                    <p>Squats: {this.state.squatsEdit}</p>
+                    <div
+                      className="day-btn"
+                      onClick={() => this.setState({ edit: true })}
+                    >
+                      Edit
+                    </div>
+                  </div>
+                )}
+              </div>
+            </section>
+            <p
+              className={
+                this.state.start ? "main-started" : "main-started__hidden"
+              }
+            >
+              Started Challenge at: {this.state.time}
+            </p>
+            <p
+              className={
+                this.state.finish ? "main-finished" : "main-finished__hidden"
+              }
+            >
+              Finished Challenge at: {finishTime}
+            </p>
+          </div>
 
           <section className="grid">{this.renderWorkouts()}</section>
         </main>
