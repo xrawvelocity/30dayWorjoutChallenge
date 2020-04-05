@@ -16,6 +16,7 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -80,13 +81,17 @@ nav ul {
   justify-content: space-between;
 }
 
-.title {
+.title,
+.title:link,
+.title:visited {
+  text-decoration: none;
+  color: #ddd;
   font-size: 4rem;
   text-transform: uppercase;
 }
 
 .title:hover {
-  cursor: default;
+  cursor: pointer;
 }
 
 .title-green {

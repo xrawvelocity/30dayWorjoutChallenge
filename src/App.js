@@ -252,10 +252,10 @@ export default class App extends Component {
         <nav>
           <div className="nav">
             <div>
-              <h1 className="title">
+              <a href="#top" className="title">
                 <span className="title-green">30 Day</span>{" "}
                 <span>Workout Challenge</span>
-              </h1>
+              </a>
             </div>
             <ul>
               <li
@@ -285,7 +285,7 @@ export default class App extends Component {
             </ul>
           </div>
         </nav>
-        <main>
+        <main id='top'>
           {/* ON DIFFICULTY HARD */}
           {this.state.difficulty === basicHard ? (
             <div className="main-top">
