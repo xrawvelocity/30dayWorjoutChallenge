@@ -47,9 +47,15 @@ let finishTimeHard = localStorage.getItem("finishTimeHard");
 export default class App extends Component {
   state = {
     difficulty: basicHard,
+
     startEasy: startedEasy,
     startNormal: startedNormal,
     startHard: startedHard,
+
+    timeEasy: startTimeEasy,
+    timeNormal: startTimeNormal,
+    timeHard: startTimeHard,
+
     idsEasy: [...idsEasy],
     idsNormal: [...idsNormal],
     idsHard: [...idsHard],
@@ -320,7 +326,7 @@ export default class App extends Component {
                   this.state.startHard ? "main-started" : "main-started__hidden"
                 }
               >
-                Started Challenge at: {startTimeHard}
+                Started Challenge at: {this.state.timeHard}
               </p>
               <p
                 className={
@@ -376,7 +382,7 @@ export default class App extends Component {
                     : "main-started__hidden"
                 }
               >
-                Started Challenge at: {startTimeNormal}
+                Started Challenge at: {this.state.timeNormal}
               </p>
               <p
                 className={
@@ -430,7 +436,7 @@ export default class App extends Component {
                   this.state.startEasy ? "main-started" : "main-started__hidden"
                 }
               >
-                Started Challenge at: {startTimeEasy}
+                Started Challenge at: {this.state.timeEasy}
               </p>
               <p
                 className={
