@@ -129,6 +129,7 @@ nav ul {
 .main-btns {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
   margin: 20rem 30% 10rem;
   font-size: 3rem;
 }
@@ -136,7 +137,7 @@ nav ul {
 .main-btn {
   background-color: lawngreen;
   color: #000;
-  padding: 2rem 3.5rem;
+  padding: 1.5rem 2.5rem;
   border-radius: 2px;
   margin-top: 1rem;
 }
@@ -149,6 +150,72 @@ nav ul {
 .main-btn__hidden {
   display: none;
   visibility: hidden;
+}
+
+.main-current {
+  color: #ddd;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  margin-left: 10rem;
+  margin-right: -10rem;
+  width: 500px;
+  text-align: center;
+}
+
+.main-current__saved {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.main-current__saved > * {
+  margin-bottom: 1rem;
+}
+
+.main-current h2 {
+  margin-bottom: 2rem;
+}
+
+.main-current .day-btn {
+  margin-top: 2rem;
+  align-self: center;
+}
+
+.main-current__hidden {
+  display: none;
+  visibility: hidden;
+}
+
+.main-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.main-form--group:not(:last-child) {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.main-form--group input {
+  width: 100px;
+  margin-left: 3rem;
+  border: none;
+  background-color: #333;
+  border-radius: 2px;
+  color: #ddd;
+  padding: 1rem .3rem 1rem 1rem;
+}
+
+.main-form .day-btn {
+  margin-top: 2rem;
+  align-self: center;
 }
 
 .main-started {
@@ -328,13 +395,15 @@ footer a {
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    margin-bottom: -10rem;
+    margin-bottom: -15rem;
   }
 
   .main-btns {
     display: flex;
-    justify-content: space-evenly;
-    margin: 20rem 0% 3rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20rem 0 3rem;
     font-size: 1.6rem;
   }
   
@@ -361,5 +430,18 @@ footer a {
     font-size: 1.6rem;
     color: #ddd;
     margin: 3rem 0 0rem;
+  }
+
+  .main-current {
+    color: #ddd;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 5rem 0 0 0;
+    width: 300px;
+    text-align: center;
   }
 }
