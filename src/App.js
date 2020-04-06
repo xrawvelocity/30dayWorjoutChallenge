@@ -155,7 +155,7 @@ export default class App extends Component {
             </div>
             <h2>Day {eachDay.day}:</h2>
             <p>Pushups: {eachDay.pushups}</p>
-            <p>Pullups: {eachDay.pullups}</p>
+            <p id={`day${eachDay.id}`} >Pullups: {eachDay.pullups}</p>
             <p>Leg Raises: {eachDay.legraises}</p>
             <p>Squats: {eachDay.squats}</p>
             {this.state.start ? (
@@ -246,22 +246,38 @@ export default class App extends Component {
               </a>
             </div>
             <ul>
-              {/* <li
-                onClick={() => this.setState({ difficulty: basicEasy })}
-                className={
-                  this.state.difficulty === basicEasy ? "selected" : "link"
-                }
-              >
-                Easy
-              </li>
-              <li
-                onClick={() => this.setState({ difficulty: basicNormal })}
-                className={
-                  this.state.difficulty === basicNormal ? "selected" : "link"
-                }
-              >
-                Normal
-              </li> */}
+              {this.state.start ? (
+                <Fragment>
+                  <a href="#top">
+                    <li
+                      onClick={() => this.setState({ selected: "count" })}
+                      className={
+                        this.state.selected === "count" ? "selected" : "link"
+                      }
+                    >
+                      Current Count
+                    </li>
+                  </a>
+                  <a href=
+                    {(JSON.parse(localStorage.getItem("ids"))
+                      ? (`#day${
+                          JSON.parse(localStorage.getItem("ids"))[
+                            JSON.parse(localStorage.getItem("ids")).length - 1
+                          ]
+                        }`)
+                      : `#first`)}
+                  >
+                    <li
+                      onClick={() => this.setState({ selected: "day" })}
+                      className={
+                        this.state.selected === "day" ? "selected" : "link"
+                      }
+                    >
+                      Current Day
+                    </li>
+                  </a>
+                </Fragment>
+              ) : null}
               {/* <li
                 onClick={() => this.setState({ difficulty: basic })}
                 className={
@@ -399,6 +415,7 @@ export default class App extends Component {
                 )}
               </div>
               <div
+                id="count"
                 className={!this.state.start ? "main-btn__hidden" : "main-btn"}
                 onClick={async () => {
                   await localStorage.removeItem("ids");
@@ -511,7 +528,7 @@ export default class App extends Component {
             </p>
           </div>
 
-          <section className="grid">{this.renderWorkouts()}</section>
+          <section  id="first" className="grid">{this.renderWorkouts()}</section>
         </main>
         <footer>
           <p>Copyright &copy; {curYear}</p>
