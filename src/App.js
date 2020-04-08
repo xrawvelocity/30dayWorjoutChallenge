@@ -456,7 +456,7 @@ export default class App extends Component {
                         onChange={this.handleChange}
                         type="number"
                         name="pushupsEdit"
-                        placeholder="0"
+                        placeholder={this.state.pushupsEdit}
                       />
                     </div>
                     <div className="main-form--group">
@@ -465,7 +465,7 @@ export default class App extends Component {
                         onChange={this.handleChange}
                         type="number"
                         name="pullupsEdit"
-                        placeholder="0"
+                        placeholder={this.state.pullupsEdit}
                       />
                     </div>
                     <div className="main-form--group">
@@ -474,7 +474,7 @@ export default class App extends Component {
                         onChange={this.handleChange}
                         type="number"
                         name="legraisesEdit"
-                        placeholder="0"
+                        placeholder={this.state.legraisesEdit}
                       />
                     </div>
                     <div className="main-form--group">
@@ -483,7 +483,7 @@ export default class App extends Component {
                         onChange={this.handleChange}
                         type="number"
                         name="squatsEdit"
-                        placeholder="0"
+                        placeholder={this.state.squatsEdit}
                       />
                     </div>
                     <div
