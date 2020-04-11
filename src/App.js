@@ -185,6 +185,18 @@ export default class App extends Component {
   };
 
   addToDone = async eachDay => {
+
+    await this.setState({
+      pushupsEdit: 0,
+      pullupsEdit: 0,
+      legraisesEdit: 0,
+      squatsEdit: 0
+    })
+    await localStorage.setItem("pushupsEdit", this.state.pushupsEdit);
+    await localStorage.setItem("pullupsEdit", this.state.pullupsEdit);
+    await localStorage.setItem("legraisesEdit", this.state.legraisesEdit);
+    await localStorage.setItem("squatsEdit", this.state.squatsEdit);
+
     let copyArray = [...this.state.ids];
     await copyArray.push(eachDay.id);
     let filteredArray = copyArray.filter(function(item, pos) {
