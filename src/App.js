@@ -478,6 +478,7 @@ export default class App extends Component {
                     pullupsEdit: 0,
                     legraisesEdit: 0,
                     squatsEdit: 0,
+                    done: 0,
                     edit: false
                   });
                 }}
