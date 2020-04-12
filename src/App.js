@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import Line from 'rc-progress';
 
 let curYear = new Date().getFullYear();
 
@@ -33,17 +34,17 @@ let squatsEdit = localStorage.getItem("squatsEdit");
 
 let initialPushups = localStorage.getItem("initialPushups");
 !initialPushups
-  ? (initialPushups = 200)
+  ? (initialPushups = 100)
   : (initialPushups = localStorage.getItem("initialPushups"));
 
 let addedPushups = localStorage.getItem("initialPushups");
 !addedPushups
-  ? (addedPushups = 25)
+  ? (addedPushups = 10)
   : (addedPushups = localStorage.getItem("addedPushups"));
 
 let initialPullups = localStorage.getItem("initialPullups");
 !initialPullups
-  ? (initialPullups = 100)
+  ? (initialPullups = 50)
   : (initialPullups = localStorage.getItem("initialPullups"));
 
 let addedPullups = localStorage.getItem("addedPullups");
@@ -53,12 +54,12 @@ let addedPullups = localStorage.getItem("addedPullups");
 
 let initialLegraises = localStorage.getItem("initialLegraises");
 !initialLegraises
-  ? (initialLegraises = 200)
+  ? (initialLegraises = 100)
   : (initialLegraises = localStorage.getItem("initialLegraises"));
 
 let addedLegraises = localStorage.getItem("addedLegraises");
 !addedLegraises
-  ? (addedLegraises = 25)
+  ? (addedLegraises = 10)
   : (addedLegraises = localStorage.getItem("addedLegraises"));
 
 let initialSquats = localStorage.getItem("initialSquats");
@@ -116,7 +117,7 @@ export default class App extends Component {
     let arr = [];
 
     for (let day = 1; day < 31; day++) {
-      if (day % 7) {
+      if (day % 3) {
         arr.push({
           id: day,
           day: day,
@@ -524,6 +525,9 @@ export default class App extends Component {
                 )}
               </div>
             </section>
+            
+            <div id="progress"></div>
+
             <p
               className={
                 this.state.start ? "main-started" : "main-started__hidden"

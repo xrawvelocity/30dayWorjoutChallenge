@@ -189,6 +189,10 @@ nav ul {
     display: none;
     visibility: hidden; }
 
+#progress {
+  width: 50%;
+  margin: 0 auto 10rem; }
+
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
