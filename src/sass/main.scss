@@ -67,6 +67,33 @@
     flex-direction: column;
   }
 
+  .progress {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 90%;
+    flex-direction: column;
+
+    position: fixed;
+    margin: 9% 2rem 0 0;
+    top: 0;
+    right: 0;
+
+    &-bar {
+      width: 50%;
+      margin: .7rem -1rem 1rem 0;
+    }
+    &-text {
+      color: #ddd;
+      font-size: 2.4rem;
+    }
+  
+    &__hidden {
+      display: none;
+      visibility: hidden;
+    }
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 300px));

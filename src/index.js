@@ -4,8 +4,6 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { Line } from 'rc-progress';
-
 ReactDOM.render(
   <React.StrictMode>
     <App />
@@ -13,9 +11,7 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-ReactDOM.render(<div>
-  <Line percent="40" strokeWidth="1" strokeColor="#7cfc00" />
-</div>, document.getElementById('progress'));
+
 
 
 // If you want your app to work offline and load faster, you can change

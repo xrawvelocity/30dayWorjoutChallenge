@@ -27,6 +27,7 @@ nav ul {
   text-decoration: none;
   color: #ddd;
   font-size: 4rem;
+  margin-right: -10rem;
   text-transform: uppercase;
 }
 
@@ -58,4 +59,27 @@ nav ul {
 
 .selected:hover {
   cursor: default;
+}
+
+
+.progress {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 90%;
+  flex-direction: row;
+  &-bar {
+    width: 50%;
+    margin-right: 3rem;
+    margin-top: .7rem;
+  }
+  &-text {
+    color: #ddd;
+    font-size: 3rem;
+  }
+
+  &__hidden {
+    display: none;
+    visibility: hidden;
+  }
 }

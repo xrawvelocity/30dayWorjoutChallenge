@@ -67,6 +67,7 @@ nav ul {
   text-decoration: none;
   color: #ddd;
   font-size: 4rem;
+  margin-right: -10rem;
   text-transform: uppercase; }
 
 .title:hover {
@@ -92,6 +93,23 @@ nav ul {
 
 .selected:hover {
   cursor: default; }
+
+.progress {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 90%;
+  flex-direction: row; }
+  .progress-bar {
+    width: 50%;
+    margin-right: 3rem;
+    margin-top: .7rem; }
+  .progress-text {
+    color: #ddd;
+    font-size: 3rem; }
+  .progress__hidden {
+    display: none;
+    visibility: hidden; }
 
 .main-top {
   display: flex;
@@ -188,10 +206,6 @@ nav ul {
   .main-finished__hidden {
     display: none;
     visibility: hidden; }
-
-#progress {
-  width: 50%;
-  margin: 0 auto 10rem; }
 
 .grid {
   display: grid;
@@ -296,6 +310,25 @@ footer {
     text-transform: uppercase;
     display: flex;
     flex-direction: column; }
+  .progress {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    width: 90%;
+    flex-direction: column;
+    position: fixed;
+    margin: 9% 2rem 0 0;
+    top: 0;
+    right: 0; }
+    .progress-bar {
+      width: 50%;
+      margin: .7rem -1rem 1rem 0; }
+    .progress-text {
+      color: #ddd;
+      font-size: 2.4rem; }
+    .progress__hidden {
+      display: none;
+      visibility: hidden; }
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(150px, 300px));

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
-import Line from 'rc-progress';
+import ReactDOM from 'react-dom';
+import { Line } from 'rc-progress';
 
 let curYear = new Date().getFullYear();
 
@@ -72,6 +73,11 @@ let addedSquats = localStorage.getItem("addedSquats");
   ? (addedSquats = 5)
   : (addedSquats = localStorage.getItem("addedSquats"));
 
+
+let done = ids.length - 1;
+console.log(done)
+export {done};
+
 export default class App extends Component {
   state = {
     start: started,
@@ -79,6 +85,8 @@ export default class App extends Component {
     time: startTime,
 
     ids: [...ids],
+
+    done,
 
     edit: false,
 
@@ -105,6 +113,15 @@ export default class App extends Component {
     else {
       ids = JSON.parse(localStorage.getItem("ids"));
     }
+    ReactDOM.render(<div>
+      <Line percent={`${done * 100 / 20}`} strokeWidth="5" strokeColor="#7cfc00" trailWidth="5" />
+    </div>, document.getElementById('progress'))
+  }
+
+  componentDidUpdate(){
+    ReactDOM.render(<div>
+      <Line percent={`${this.state.done * 100 / 20}`} strokeWidth="5" strokeColor="#7cfc00" trailWidth="5" />
+    </div>, document.getElementById('progress'))
   }
 
   renderWorkouts = () => {
@@ -193,6 +210,7 @@ export default class App extends Component {
       legraisesEdit: 0,
       squatsEdit: 0
     })
+
     await localStorage.setItem("pushupsEdit", this.state.pushupsEdit);
     await localStorage.setItem("pullupsEdit", this.state.pullupsEdit);
     await localStorage.setItem("legraisesEdit", this.state.legraisesEdit);
@@ -206,6 +224,10 @@ export default class App extends Component {
     await localStorage.setItem("ids", JSON.stringify(filteredArray));
 
     await this.setState({ ids: filteredArray });
+
+    done = this.state.ids.length - 1;
+    this.setState({ done })
+    console.log(done)
   };
 
   handleChange = e => {
@@ -261,6 +283,10 @@ export default class App extends Component {
             <ul>
               {this.state.start ? (
                 <Fragment>
+                <div class="progress">
+                  <div class="progress-bar" id="progress"></div>
+                  <h1 class="progress-text">{`${this.state.done * 100 / 20}%`}</h1>
+                </div>
                   <a href="#top">
                     <li
                       onClick={() => this.setState({ selected: "count" })}
@@ -290,7 +316,10 @@ export default class App extends Component {
                     </li>
                   </a>
                 </Fragment>
-              ) : null}
+              ) : <div class="progress progress__hidden">
+                  <div class="progress-bar" id="progress"></div>
+                  <h1 class="progress-text">{`${this.state.done * 100 / 20}%`}</h1>
+                </div>}
               {/* <li
                 onClick={() => this.setState({ difficulty: basic })}
                 className={
@@ -526,8 +555,6 @@ export default class App extends Component {
               </div>
             </section>
             
-            <div id="progress"></div>
-
             <p
               className={
                 this.state.start ? "main-started" : "main-started__hidden"
